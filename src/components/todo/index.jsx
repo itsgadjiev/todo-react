@@ -2,12 +2,13 @@ import React from 'react'
 import TodoList from './TodoList'
 import { TodoInput } from './TodoInput';
 
-const todosArr = [];
 
 export const Todo = () => {
+
+    const [todosArr, setTodos] = React.useState([]);
     return (
-        <div>
-            <TodoInput todos={todosArr} />
+        <div className='todo-wrapper'>
+            <TodoInput todos={todosArr} setTodos={setTodos} />
             <TodoList todos={todosArr} />
         </div>
     )

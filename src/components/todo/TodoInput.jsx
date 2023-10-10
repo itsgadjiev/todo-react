@@ -1,14 +1,14 @@
 import React from 'react'
+import '../../App.css'
 
-
-
-
-export const TodoInput = ({ todos }) => {
+export const TodoInput = ({ todos, setTodos }) => {
     const [todoItem, setTodoItem] = React.useState('');
 
     const AddToTodoArr = () => {
-        todos.push(todoItem);
-        console.log(todos);
+        if (todoItem.trim() !== '') {
+            setTodos([...todos, todoItem]);
+            setTodoItem('');
+        }
     };
 
     const handleInputChange = (e) => {
@@ -16,8 +16,8 @@ export const TodoInput = ({ todos }) => {
     };
 
     return (
-        <div>
-            <h2>Things To Do</h2>
+        <div >
+            <h2 className='text-center'>Things To Do</h2>
             <input type="text" placeholder='to-do' onChange={handleInputChange} value={todoItem} />
             <button onClick={AddToTodoArr}>Add</button>
         </div>
